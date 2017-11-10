@@ -1,3 +1,3 @@
-# Cannon Fodder Demo Data
+# Cannon Fodder Demos & Campaign Data
 
-To be placed inside the OpenFodder/Data directory
+To be placed inside the OpenFodder/Run directory.
