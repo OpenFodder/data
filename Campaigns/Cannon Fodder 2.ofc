@@ -70,7 +70,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -82,7 +84,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -94,7 +98,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -107,7 +113,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "ACTIVATE ALL SWITCHES"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -124,7 +132,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -136,7 +146,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -148,7 +160,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 4,
+	 "Rockets": 0
     }
    ]
   },
@@ -165,7 +179,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -176,7 +192,9 @@
      "Name": "WIZARD PRANKS",
      "Objectives": [
       "KILL ALL ENEMY"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -193,7 +211,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -205,7 +225,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -234,7 +256,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 4
     },
     {
      "Aggression": [
@@ -246,7 +270,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -258,7 +284,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -270,7 +298,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -287,7 +317,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -299,7 +331,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -316,7 +350,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -328,7 +364,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 2
     },
     {
      "Aggression": [
@@ -341,7 +379,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "PROTECT ALL CIVILIANS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -353,7 +393,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -366,7 +408,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -383,7 +427,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -430,7 +476,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -441,7 +489,9 @@
      "Name": "SPEEDWAY STAR",
      "Objectives": [
       "KILL ALL ENEMY"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 1
     },
     {
      "Aggression": [
@@ -454,7 +504,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 1
     },
     {
      "Aggression": [
@@ -466,7 +518,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 2
     },
     {
      "Aggression": [
@@ -479,7 +533,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -507,7 +563,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -519,7 +577,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 4,
+	 "Rockets": 0
     }
    ]
   },
@@ -560,7 +620,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 6,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -633,7 +695,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -680,7 +744,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -692,7 +758,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 2
     }
    ]
   },
@@ -709,7 +777,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 4
     },
     {
      "Aggression": [
@@ -721,7 +791,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 2,
+	 "Rockets": 2
     },
     {
      "Aggression": [
@@ -734,7 +806,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -764,7 +838,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGES"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     }
    ]
   },
@@ -805,7 +881,9 @@
      "Name": "CHEDDINGTON",
      "Objectives": [
       "RESCUE HOSTAGES"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -818,7 +896,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "ACTIVATE ALL SWITCHES"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 4
     }
    ]
   },
@@ -835,7 +915,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -847,7 +929,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -871,7 +955,9 @@
      "Objectives": [
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS"
-     ]
+     ],
+	 "Grenades": 0,
+	 "Rockets": 0
     },
     {
      "Aggression": [
@@ -884,7 +970,9 @@
       "KILL ALL ENEMY",
       "DESTROY ENEMY BUILDINGS",
       "RESCUE HOSTAGE"
-     ]
+     ],
+	 "Grenades": 1,
+	 "Rockets": 0
     }
    ]
   },
