@@ -6,7 +6,7 @@ Terrain.Jungle.Random = function() {
 	persistance = Map.getRandomFloat(0.1, 1.);	// higher produces more trees
 	z = Map.getRandomFloat(0.1, 10);
 
-	simplex = new SimplexNoise(scale, scale, lacunarity, persistance);
+	simplex = new SimplexNoise(scale, lacunarity, persistance);
 
 	octaves = 5 + Math.log(scale);
 
