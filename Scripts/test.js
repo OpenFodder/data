@@ -1,8 +1,8 @@
 
+Terrain.Random();
+
 StartingPositions.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
-
-
 
 // RandomSprite.scriptCall("General/test.js");
 	//if(Map.getTileType() == TileTypes.Jungle) {
