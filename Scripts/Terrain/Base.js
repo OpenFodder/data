@@ -27,7 +27,7 @@ Terrain = {
 	
 	
 	
-	Random: function() {
+	RandomTiles: function() {
 
 		switch(Map.getTileType()) {
 			

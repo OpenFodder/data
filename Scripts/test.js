@@ -1,5 +1,5 @@
 
-Terrain.Random();
+Terrain.RandomTiles();
 
 StartingPositions.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
