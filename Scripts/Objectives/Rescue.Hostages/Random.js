@@ -24,11 +24,16 @@ Objectives.RescueHostages.Random = function(pHostageGroups, pHostageCount) {
 	
 	// Find a position for the tent which is more than 100 away from the first hostage group
 	do {
-		position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
-	} while( Map.getDistanceBetweenPositions(HostageGroups[0], position) < 100);
+		TentPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+	} while( Map.getDistanceBetweenPositions(HostageGroups[0], TentPosition) < 100);
 	
-	Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, position.x, position.y );
+	Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, TentPosition.x, TentPosition.y );
 	
-	// Todo check path between hostage sprites and tent
+	
+	for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
+		// Todo check path between hostage sprites and tent
+		
+		// TentPosition HostageGroups[GroupCount]
+	}
 	
 };
