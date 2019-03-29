@@ -1,16 +1,17 @@
 
-StartingPositions = {
+StartingPosition = {
+	Position: { x: 0, y: 0 },
 	
 	RandomXY: function(pCount) {
-		position = Map.getRandomXYByTerrainType(TerrainType.Land, 5);
+		this.Position = Map.getRandomXYByTerrainType(TerrainType.Land, 5);
 
 		for(var count = 0; count < pCount; ++count) {
-			Map.SpriteAdd( SpriteTypes.Player, position.x, position.y );
+			Map.SpriteAdd( SpriteTypes.Player, this.Position.x, this.Position.y );
 			
 			if(count / 1)
-				position.x += 16;
+				this.Position.x += 16;
 			else
-				position.y += 16;
+				this.Position.y += 16;
 		}
 	}
 };
