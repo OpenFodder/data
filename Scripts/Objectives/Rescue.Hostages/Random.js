@@ -1,6 +1,7 @@
 
 Objectives.RescueHostages.Random = function(pHostageGroups, pHostageCount) {
 	HostageGroups = [];
+	needHelicopter = false;
 	
 	if(pHostageGroups == 0)
 		++pHostageGroups;
@@ -22,18 +23,41 @@ Objectives.RescueHostages.Random = function(pHostageGroups, pHostageCount) {
 		}
 	}	
 	
-	// Find a position for the tent which is more than 100 away from the first hostage group
+	// Find a position for the tent which is more than 50 away from the first hostage group
 	do {
 		TentPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
-	} while( Map.getDistanceBetweenPositions(HostageGroups[0], TentPosition) < 100);
+	} while( Map.getDistanceBetweenPositions(HostageGroups[0], TentPosition) < 50);
 	
+	//print("Steps between Tent and Human Start: " + Distance.length);
+	
+	//print("Starting X: " + StartingPosition.Position.x + " Y: " + StartingPosition.Position.y);
+	//print("Tent Starting X: " + TentPosition.x + " Y: " + TentPosition.y);
+
 	Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, TentPosition.x, TentPosition.y );
 	
+	// Ensure a walkable path between the humans and the tent
+	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, TentPosition, StartingPosition.Position);
+	if(Distance.length == 0)
+		needHelicopter = true;
 	
-	for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
-		// Todo check path between hostage sprites and tent
-		
-		// TentPosition HostageGroups[GroupCount]
+	//print("Steps between Tent and Human Start: " + Distance.length);
+	
+	for(var count = 0; count < Distance.length; ++count) {
+		Map.SpriteAdd( SpriteTypes.GrenadeBox, Distance[count].x, Distance[count].y);
 	}
 	
+	for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
+
+		Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, TentPosition, HostageGroups[GroupCount]);
+		if(Distance.length == 0) {
+			needHelicopter = true;
+			break;
+		}
+		
+		//print("Steps between tent and hostage group: " + Distance.length);
+	}
+	
+	if(needHelicopter) {
+		Helicopters.Human.Add_Random_Homing();
+	}
 };
