@@ -52,10 +52,10 @@ Terrain = {
 	Randomize: function() {
 
 		// TODO: Rotate through available random functions
-		//pScale = Map.getRandomFloat(0.01, 0.1);
-		//pLacunarity = Map.getRandomFloat(0.1, 0.5);
-		//pPersistance = Map.getRandomFloat(0.1, 1.);	// higher produces more trees
-		//return RandomSimplexNoise(pScale, pLacunarity, pPersistance, 5 );
+		pScale = Map.getRandomFloat(0.01, 0.1);
+		pLacunarity = Map.getRandomFloat(0.1, 0.5);
+		pPersistance = Map.getRandomFloat(0.1, 1.);	// higher produces more trees
+		return this.RandomSimplexNoise(pScale, pLacunarity, pPersistance, 5 );
 		
 		pRoughness = Map.getRandomFloat(0.01, 0.3);
 		pScale = Map.getRandomFloat(0.01, 0.1);

@@ -8,8 +8,9 @@ Objectives = {
 		
 	},
 	RescueHostages: {
-		
+
 	},
+
 	ProtectCivilians: {
 		
 	},

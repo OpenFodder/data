@@ -1,74 +1,90 @@
-
-Objectives.RescueHostages.Random = function(pHostageGroups, pHostageCount) {
-	HostageGroups = [];
-	needHelicopter = false;
+Objectives.RescueHostages.AddHelicopter = function() {
 	
-	if(pHostageGroups == 0)
-		++pHostageGroups;
-	if(pHostageCount == 0)
-		++pHostageCount;
+	if(Session.RescueHelicopter !== null) {print("Rescue X: " + Session.RescueHelicopter.x);
+		return;}
 
-	// Place a number of 'groups' of hostages
-	for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
-		
-		HostageGroups[GroupCount] = Map.getRandomXYByTerrainType(TerrainType.Land, 2);
-	
-		// Place an amount of hostages near this group
-		for(var count = 0; count < pHostageCount; ++count) {
-			
-			position = HostageGroups[GroupCount];
-			position.x += (16 * count);
-			
-			Map.SpriteAdd( SpriteTypes.Hostage, position.x, position.y );
-		}
-	}	
+	print("Starting X: " + Session.HumanPosition.x + " Y: " + Session.HumanPosition.y);
+	print("Tent Starting X: " + Session.RescueTentPosition.x + " Y: " + Session.RescueTentPosition.y);
 
-	if(Map.getSpriteTypeCount( SpriteTypes.Hostage_Rescue_Tent ) == 0) {
-
-		// Find a position for the tent which is more than 50 away from the first hostage group
-		do {
-			TentPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
-		} while( Map.getDistanceBetweenPositions(HostageGroups[0], TentPosition) < 50);
-		
-		Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, TentPosition.x, TentPosition.y );
-
-	} else {
-		Sprites = Map.getSpritesByType(SpriteTypes.Hostage_Rescue_Tent);
-		print("sprites: " + Sprites.length);
-
-		TentPosition = new cPosition();
-		TentPosition.x = Sprites[0].x;
-		TentPosition.y = Sprites[0].y; 
-	}
-
-	print("Starting X: " + StartingPosition.Position.x + " Y: " + StartingPosition.Position.y);
-	print("Tent Starting X: " + TentPosition.x + " Y: " + TentPosition.y);
 	// Ensure a walkable path between the humans and the tent
-	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, TentPosition, StartingPosition.Position);
+	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, Session.RescueTentPosition, Session.HumanPosition);
 	if(Distance.length == 0)
 		needHelicopter = true;
+	//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, TentPosition, Session.HumanPosition);
 
-	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, TentPosition, StartingPosition.Position);
-	print("Steps between Tent and Human Start: " + Distance.length);
-	
 	if(!needHelicopter) {
-		for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
+		print("Placing rescue helicopter");
 
-			Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,TentPosition, HostageGroups[GroupCount]);
-			Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,StartingPosition.Position, HostageGroups[GroupCount]);
+		for( x = 0; x < Session.HostageGroupPositions.length; ++x) {
+			//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,TentPosition, HostagePosition);
+			//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,Session.HumanPosition, HostagePosition);
 
-			Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, TentPosition, HostageGroups[GroupCount]);
+			Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, Session.RescueTentPosition, Session.HostageGroupPositions[x]);
 			if(Distance.length == 0) {
 				needHelicopter = true;
 				break;
 			}
 			
-			print("Steps between tent and hostage group: " + Distance.length);
 		}
+		print("Steps between tent and hostage group: " + Distance.length);
 	}
 
 	if(needHelicopter) {
-		Position = Helicopters.Human.Add_Random_Homing();
-		Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, StartingPosition.Position, Position);
+		Session.RescueHelicopter = Helicopters.Human.Add_Random_Homing();
+		//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HumanPosition, HelicopterPosition);
 	}
+}
+
+/**
+ * Create a hostage rescue tent
+ * 
+ * @return cPosition
+ */
+Objectives.RescueHostages.CreateTent = function() {
+
+	TentSprites = Map.getSpritesByType(SpriteTypes.Hostage_Rescue_Tent);
+	if(TentSprites.length == 0) {
+
+		// TODO: Loop all known groups
+		// Find a position for the tent which is more than 50 away from the first hostage group
+		do {
+			Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+		} while( Map.getDistanceBetweenPositions(Session.HostageGroupPositions[0], Position) < 50);
+		
+		Session.RescueTentPosition = Position;
+		Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, Position.x, Position.y );
+	} else {
+		Session.RescueTentPosition = TentSprites[0].getPosition();
+	}
+
+	return Session.RescueTentPosition;
+}
+
+/**
+ * Add a random hostage, rescue tent and helicopter (if needed) to the map
+ * 
+ * @params pHostageCount How many hostages to place
+ */
+Objectives.RescueHostages.Random = function(pHostageCount) {
+	needHelicopter = false;
+	
+	if(pHostageCount == 0)
+		++pHostageCount;
+
+	// Place a number of 'groups' of hostages
+	HostagePosition = Map.getRandomXYByTerrainType(TerrainType.Land, 2);
+	Session.HostageGroupPositions.push(HostagePosition);
+
+	// Place an amount of hostages near this group
+	for(var count = 0; count < pHostageCount; ++count) {
+		
+		position = new cPosition();
+		position.x = HostagePosition.x + (16 * count);
+		position.y = HostagePosition.y;
+
+		Map.SpriteAdd( SpriteTypes.Hostage, position.x, position.y );
+	}	
+
+	this.CreateTent();
+	this.AddHelicopter();
 };

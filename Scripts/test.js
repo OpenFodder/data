@@ -1,28 +1,28 @@
 
+Session = CreateSession();
+
 
 Map.Create(45, 40, TileTypes.Jungle, 0);
 //Terrain.RandomTiles();
 Terrain.Randomize();
 
-StartingPosition.RandomXY(3);
+Human.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
 Objectives.DestroyEnemyBuildings.Random(2);
-Objectives.RescueHostages.Random(2, 1);
+
+Objectives.RescueHostages.Random(1);
+Objectives.RescueHostages.Random(1);
 
 
+// Some Fun
+RandomLast = null;
 
+for(count = 0; count < 5; ++count) {
+	Random = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
 
-// RandomSprite.scriptCall("General/test.js");
-	//if(Map.getTileType() == TileTypes.Jungle) {
-		
-		//position = Map.getRandomXYByTerrainType(TerrainType.Land, 5);
+	if(RandomLast != null)
+		Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,Random, RandomLast);
 
-	//	Map.SpriteAdd( SpriteTypes.Enemy, position.x - 16, position.y );
-		
-	//	found_sprites = Map.getSpritesByType(SpriteTypes.Player);
-	//	found_sprites.forEach(function(sprite) {
-			
-	//		print("Sprite X: " + sprite.x + " Y: " + sprite.y);
-
-	// });
-	//}
+	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Random, Session.HumanPosition);
+	RandomLast = Random;
+}
