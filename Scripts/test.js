@@ -1,8 +1,8 @@
 
 
-Map.Create(40, 30, TileTypes.Jungle, 0);
+Map.Create(80, 60, TileTypes.Jungle, 0);
 //Terrain.RandomTiles();
-Terrain.Jungle.RandomSimplexIslands();
+Terrain.Randomize();
 
 StartingPosition.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
