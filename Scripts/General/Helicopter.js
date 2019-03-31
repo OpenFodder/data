@@ -4,7 +4,7 @@ Helicopters = {
 	Human: {
 		
 		Add_Random_Homing: function() {
-			
+			Distance = [];
 			// Find a position which can be accessed by walking
 			do {
 				Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
@@ -12,6 +12,8 @@ Helicopters = {
 			} while(Distance.length == 0);
 
 			Map.SpriteAdd( SpriteTypes.Helicopter_Homing_Human, Position.x, Position.y );
+
+			return Position;
 		},
 			
 		/* Add a random helicopter */

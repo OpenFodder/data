@@ -1,18 +1,8 @@
 
-/*
-Map.Create(20, 20, TileTypes.Jungle, 0);
-Map.CreateRandom();
-
-noise = Map.SimplexIslands(5, 0.1, 0.2, 3, true);
-
-for( x = 0; x < 20; ++x) {
-	for( y = 0; y < 20; ++y) {
-		print("" + noise[x][y] + " ");
-	}
-}*/
 
 Map.Create(40, 30, TileTypes.Jungle, 0);
-Terrain.RandomTiles();
+//Terrain.RandomTiles();
+Terrain.Jungle.RandomSimplexIslands();
 
 StartingPosition.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);

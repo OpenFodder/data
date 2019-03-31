@@ -28,36 +28,38 @@ Objectives.RescueHostages.Random = function(pHostageGroups, pHostageCount) {
 		TentPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
 	} while( Map.getDistanceBetweenPositions(HostageGroups[0], TentPosition) < 50);
 	
-	//print("Steps between Tent and Human Start: " + Distance.length);
 	
-	//print("Starting X: " + StartingPosition.Position.x + " Y: " + StartingPosition.Position.y);
-	//print("Tent Starting X: " + TentPosition.x + " Y: " + TentPosition.y);
+	print("Starting X: " + StartingPosition.Position.x + " Y: " + StartingPosition.Position.y);
+	print("Tent Starting X: " + TentPosition.x + " Y: " + TentPosition.y);
 
 	Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, TentPosition.x, TentPosition.y );
-	
+
 	// Ensure a walkable path between the humans and the tent
 	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, TentPosition, StartingPosition.Position);
 	if(Distance.length == 0)
 		needHelicopter = true;
-	
-	//print("Steps between Tent and Human Start: " + Distance.length);
-	
-	for(var count = 0; count < Distance.length; ++count) {
-		Map.SpriteAdd( SpriteTypes.GrenadeBox, Distance[count].x, Distance[count].y);
-	}
-	
-	for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
 
-		Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, TentPosition, HostageGroups[GroupCount]);
-		if(Distance.length == 0) {
-			needHelicopter = true;
-			break;
-		}
-		
-		//print("Steps between tent and hostage group: " + Distance.length);
-	}
+	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, TentPosition, StartingPosition.Position);
+	print("Steps between Tent and Human Start: " + Distance.length);
 	
+	if(!needHelicopter) {
+		for(var GroupCount = 0; GroupCount < pHostageGroups; ++GroupCount) {
+
+			Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,TentPosition, HostageGroups[GroupCount]);
+			Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,StartingPosition.Position, HostageGroups[GroupCount]);
+
+			Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, TentPosition, HostageGroups[GroupCount]);
+			if(Distance.length == 0) {
+				needHelicopter = true;
+				break;
+			}
+			
+			print("Steps between tent and hostage group: " + Distance.length);
+		}
+	}
+
 	if(needHelicopter) {
-		Helicopters.Human.Add_Random_Homing();
+		Position = Helicopters.Human.Add_Random_Homing();
+		Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, StartingPosition.Position, Position);
 	}
 };

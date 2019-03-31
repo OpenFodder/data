@@ -3,6 +3,12 @@ Terrain = {
 	
 	Jungle: {
 		
+		Tiles: {
+			Water: 326,
+			QuickSand: 167,
+			Land: 123,
+			Tree: 82
+		}
 	},
 
 	Desert: {
@@ -29,10 +35,12 @@ Terrain = {
 	
 	RandomTiles: function() {
 
+		// TODO: Rotate through available random functions
+		
 		switch(Map.getTileType()) {
 			
 			case TileTypes.Jungle:
-				return Terrain.Jungle.Random();
+				return Terrain.Jungle.RandomSimplexNoise();
 			
 			default:
 				return;
