@@ -83,6 +83,7 @@ Objectives.RescueHostages.Random = function(pHostageCount) {
 		position.y = HostagePosition.y;
 
 		Map.SpriteAdd( SpriteTypes.Hostage, position.x, position.y );
+		Map.SpriteAdd( SpriteTypes.Enemy, position.x + 8, position.y );
 	}	
 
 	this.CreateTent();

@@ -1,7 +1,7 @@
 
 Session = CreateSession();
 
-Map.Create(45, 40, TileTypes.Jungle, 0);
+Map.Create(100, 60, TileTypes.Jungle, 0);
 //Terrain.RandomTiles();
 Terrain.Randomize();
 
@@ -11,11 +11,13 @@ Objectives.DestroyEnemyBuildings.Random(2);
 
 Objectives.RescueHostages.Random(1);
 Objectives.RescueHostages.Random(1);
-
+Objectives.RescueHostages.Random(1);
+Objectives.RescueHostages.Random(1);
 
 // Some Fun
-RandomLast = null;
 /*
+RandomLast = null;
+
 for(count = 0; count < 5; ++count) {
 	Random = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
 
@@ -28,6 +30,12 @@ for(count = 0; count < 5; ++count) {
 
 for(count = 0; count < Session.HostageGroupPositions.length; ++count) {
 
+	Strange.PlaceSpritesOnPath(SpriteTypes.Enemy, Session.HostageGroupPositions[count], Session.HumanPosition);
 	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HostageGroupPositions[count], Session.HumanPosition);
+
+	Strange.PlaceSpritesOnPath(SpriteTypes.Enemy, Session.HostageGroupPositions[count], Session.RescueTentPosition);
 	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HostageGroupPositions[count], Session.RescueTentPosition);
 }
+
+if(Session.RescueHelicopter !== null)
+	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.RescueHelicopter, Session.HumanPosition);
