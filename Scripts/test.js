@@ -1,6 +1,6 @@
 
 
-Map.Create(80, 60, TileTypes.Jungle, 0);
+Map.Create(45, 40, TileTypes.Jungle, 0);
 //Terrain.RandomTiles();
 Terrain.Randomize();
 
