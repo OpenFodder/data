@@ -91,11 +91,11 @@ Terrain = {
 		}
 	},
 
-	RandomSimplexNoise: function(pScale, pLacunarity, pPersistance, pOctaves ) {
+	RandomSimplexNoise: function(pFrequency, pLacunarity, pPersistance, pOctaves ) {
 		Tiles = this.GetTiles();
-		pOctaves = pOctaves + Math.log(pScale);
-		print("scale: " + pScale + " lac: " + pLacunarity + " per: " + pPersistance + " octaves:" + pOctaves);
-		noises = Map.SimplexNoise(pOctaves, pScale, pLacunarity, pPersistance);
+		pOctaves = pOctaves + Math.log(pFrequency);
+		print("frequency: " + pFrequency + " lac: " + pLacunarity + " per: " + pPersistance + " octaves:" + pOctaves);
+		noises = Map.SimplexNoise(pOctaves, pFrequency, pLacunarity, pPersistance);
 		
 		for( y = 0; y < Map.getHeight(); ++y) {
 			for( x = 0; x < Map.getWidth(); ++x ) {
