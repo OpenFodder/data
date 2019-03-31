@@ -1,7 +1,11 @@
-Objectives.RescueHostages.AddHelicopter = function() {
+
+/**
+ * Create a helicopter to rescue hostages
+ */
+Objectives.RescueHostages.CreateHelicopter = function() {
 	
-	if(Session.RescueHelicopter !== null) {print("Rescue X: " + Session.RescueHelicopter.x);
-		return;}
+	if(Session.RescueHelicopter !== null)
+		return;
 
 	print("Starting X: " + Session.HumanPosition.x + " Y: " + Session.HumanPosition.y);
 	print("Tent Starting X: " + Session.RescueTentPosition.x + " Y: " + Session.RescueTentPosition.y);
@@ -10,30 +14,26 @@ Objectives.RescueHostages.AddHelicopter = function() {
 	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, Session.RescueTentPosition, Session.HumanPosition);
 	if(Distance.length == 0)
 		needHelicopter = true;
-	//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, TentPosition, Session.HumanPosition);
 
 	if(!needHelicopter) {
-		print("Placing rescue helicopter");
-
+		// Check if any of the hostage groups cant walk to the rescue tent
 		for( x = 0; x < Session.HostageGroupPositions.length; ++x) {
-			//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,TentPosition, HostagePosition);
-			//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,Session.HumanPosition, HostagePosition);
-
 			Distance = Map.calculatePathBetweenPositions(SpriteTypes.Hostage, Session.RescueTentPosition, Session.HostageGroupPositions[x]);
 			if(Distance.length == 0) {
 				needHelicopter = true;
 				break;
 			}
-			
+			print("Steps between tent and hostage group: " + Distance.length);
 		}
-		print("Steps between tent and hostage group: " + Distance.length);
+		
 	}
 
 	if(needHelicopter) {
+		print("Placing rescue helicopter");
 		Session.RescueHelicopter = Helicopters.Human.Add_Random_Homing();
 		//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HumanPosition, HelicopterPosition);
 	}
-}
+};
 
 /**
  * Create a hostage rescue tent
@@ -58,7 +58,7 @@ Objectives.RescueHostages.CreateTent = function() {
 	}
 
 	return Session.RescueTentPosition;
-}
+};
 
 /**
  * Add a random hostage, rescue tent and helicopter (if needed) to the map
@@ -86,5 +86,5 @@ Objectives.RescueHostages.Random = function(pHostageCount) {
 	}	
 
 	this.CreateTent();
-	this.AddHelicopter();
+	this.CreateHelicopter();
 };

@@ -1,7 +1,6 @@
 
 Session = CreateSession();
 
-
 Map.Create(45, 40, TileTypes.Jungle, 0);
 //Terrain.RandomTiles();
 Terrain.Randomize();
