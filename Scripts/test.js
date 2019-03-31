@@ -15,7 +15,7 @@ Objectives.RescueHostages.Random(1);
 
 // Some Fun
 RandomLast = null;
-
+/*
 for(count = 0; count < 5; ++count) {
 	Random = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
 
@@ -24,4 +24,10 @@ for(count = 0; count < 5; ++count) {
 
 	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Random, Session.HumanPosition);
 	RandomLast = Random;
+}*/
+
+for(count = 0; count < Session.HostageGroupPositions.length; ++count) {
+
+	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HostageGroupPositions[count], Session.HumanPosition);
+	Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HostageGroupPositions[count], Session.RescueTentPosition);
 }
