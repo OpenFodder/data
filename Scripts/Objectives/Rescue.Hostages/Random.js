@@ -7,14 +7,17 @@ Objectives.RescueHostages.CreateHelicopter = function() {
 	if(Session.RescueHelicopter !== null)
 		return;
 
-	print("Starting X: " + Session.HumanPosition.x + " Y: " + Session.HumanPosition.y);
-	print("Tent Starting X: " + Session.RescueTentPosition.x + " Y: " + Session.RescueTentPosition.y);
-
-	// Ensure a walkable path between the humans and the tent
+	// Check if a walkable path between the humans and the tent
 	Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, Session.RescueTentPosition, Session.HumanPosition);
 	if(Distance.length == 0)
 		needHelicopter = true;
-
+	else {
+		// If its not required, give a random chance of placing it anyway
+		if(Map.getRandomInt(0, 10) % 3) {
+			needHelicopter = true;
+		}
+	}
+	
 	if(!needHelicopter) {
 		// Check if any of the hostage groups cant walk to the rescue tent
 		for( x = 0; x < Session.HostageGroupPositions.length; ++x) {
@@ -23,16 +26,11 @@ Objectives.RescueHostages.CreateHelicopter = function() {
 				needHelicopter = true;
 				break;
 			}
-			print("Steps between tent and hostage group: " + Distance.length);
 		}
-		
 	}
 
-	if(needHelicopter) {
-		print("Placing rescue helicopter");
+	if(needHelicopter)
 		Session.RescueHelicopter = Helicopters.Human.Add_Random_Homing();
-		//Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox, Session.HumanPosition, HelicopterPosition);
-	}
 };
 
 /**
@@ -44,13 +42,18 @@ Objectives.RescueHostages.CreateTent = function() {
 
 	TentSprites = Map.getSpritesByType(SpriteTypes.Hostage_Rescue_Tent);
 	if(TentSprites.length == 0) {
+		Attempts = 0;
 
+		print("Placing rescue tent");
 		// TODO: Loop all known groups
 		// Find a position for the tent which is more than 50 away from the first hostage group
 		do {
 			Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
-		} while( Map.getDistanceBetweenPositions(Session.HostageGroupPositions[0], Position) < 50);
-		
+			++Attempts;
+		} while( Map.getDistanceBetweenPositions(Session.HostageGroupPositions[0], Position) < 50 && Attempts < 10);
+		if(Attempts == 10)
+			print("Failed finding location for rescue tent, placing anyway");
+
 		Session.RescueTentPosition = Position;
 		Map.SpriteAdd( SpriteTypes.Hostage_Rescue_Tent, Position.x, Position.y );
 	} else {
@@ -68,6 +71,8 @@ Objectives.RescueHostages.CreateTent = function() {
 Objectives.RescueHostages.Random = function(pHostageCount) {
 	needHelicopter = false;
 	
+	print("Placing hostages");
+
 	if(pHostageCount == 0)
 		++pHostageCount;
 
