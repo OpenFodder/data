@@ -60,14 +60,11 @@ Terrain = {
 		pRoughness = Map.getRandomFloat(0.01, 0.3);
 		pScale = Map.getRandomFloat(0.01, 0.1);
 		pSeed = Map.getRandomInt(1, 500);
-	
 		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 5, true);
 	},
 	
 	RandomSimplexIslands: function(pRoughness, pScale, pSeed, pOctaves, pRadialEnabled) {
 		Tiles = this.GetTiles();
-		pOctaves = pOctaves + Math.log(pScale);
-		print("scale: " + pScale + " rough: " + pRoughness + " seed: " + pSeed + " octaves:" + pOctaves);
 		noises = Map.SimplexIslands(pOctaves, pRoughness, pScale, pSeed, pRadialEnabled);
 		
 		for( y = 0; y < Map.getHeight(); ++y) {
@@ -93,8 +90,8 @@ Terrain = {
 
 	RandomSimplexNoise: function(pFrequency, pLacunarity, pPersistance, pOctaves ) {
 		Tiles = this.GetTiles();
-		pOctaves = pOctaves + Math.log(pFrequency);
-		print("frequency: " + pFrequency + " lac: " + pLacunarity + " per: " + pPersistance + " octaves:" + pOctaves);
+
+		print("SimplexNoise. frequency: " + pFrequency + " lac: " + pLacunarity + " per: " + pPersistance + " octaves:" + pOctaves);
 		noises = Map.SimplexNoise(pOctaves, pFrequency, pLacunarity, pPersistance);
 		
 		for( y = 0; y < Map.getHeight(); ++y) {
