@@ -1,4 +1,7 @@
 
+/**
+ * 
+ */
 Objectives.DestroyEnemyBuildings.Random = function(pCount) {
 	
 	for(var count = 0; count < pCount; ++count) {

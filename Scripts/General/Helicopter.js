@@ -1,5 +1,5 @@
 
-Helicopters = {
+var Helicopters = {
 	
 	Human: {
 		
@@ -7,7 +7,7 @@ Helicopters = {
 		 *  Add a homing missile helicopter at a random X/Y
 		 *   in a path which is accessible on foot to the player
 		 */
-		Add_Random_Homing: function() {
+		RandomHoming: function() {
 			Attempts = 0;
 			Distance = [];
 			
@@ -31,7 +31,7 @@ Helicopters = {
 		/**
 		 * Add a random helicopter
 		 */
-		RandomXY: function() {
+		Random: function() {
 			Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
 
 			// TODO

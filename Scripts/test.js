@@ -1,8 +1,9 @@
 
-Session = CreateSession();
+// Reset the map session
+Session.Reset();
+
 
 Map.Create(50, 30, TileTypes.Jungle, 0);
-//Terrain.RandomTiles();
 Terrain.Randomize();
 
 Human.RandomXY(3);

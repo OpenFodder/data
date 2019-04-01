@@ -1,5 +1,5 @@
 
-Terrain = {
+var Terrain = {
 	
 	Jungle: {
 		
@@ -31,6 +31,11 @@ Terrain = {
 		
 	},
 	
+	/**
+	 * Get the basic tile ids for the current map tileType
+	 * 
+	 * @return object
+	 */
 	GetTiles: function() {
 				
 		switch(Map.getTileType()) {
@@ -48,7 +53,10 @@ Terrain = {
 				return Terrain.Jungle.Tiles;;
 		}
 	},
-		
+	
+	/**
+	 * Create a random map layout
+	 */
 	Randomize: function() {
 
 		// TODO: Rotate through available random functions
@@ -63,6 +71,15 @@ Terrain = {
 		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 5, true);
 	},
 	
+	/**
+	 * Create random simplex islands, with basic tiles
+	 * 
+	 * @param {number} pRoughness 
+	 * @param {number} pScale 
+	 * @param {number} pSeed 
+	 * @param {number} pOctaves 
+	 * @param {boolean} pRadialEnabled 
+	 */
 	RandomSimplexIslands: function(pRoughness, pScale, pSeed, pOctaves, pRadialEnabled) {
 		Tiles = this.GetTiles();
 		noises = Map.SimplexIslands(pOctaves, pRoughness, pScale, pSeed, pRadialEnabled);
@@ -88,6 +105,14 @@ Terrain = {
 		}
 	},
 
+	/**
+	 * Create a random simplex noise map, with basic tiles
+	 * 
+	 * @param {number} pFrequency 
+	 * @param {number} pLacunarity 
+	 * @param {number} pPersistance 
+	 * @param {number} pOctaves 
+	 */
 	RandomSimplexNoise: function(pFrequency, pLacunarity, pPersistance, pOctaves ) {
 		Tiles = this.GetTiles();
 

@@ -1,6 +1,11 @@
 
-Human = {
+var Human = {
 
+	/**
+	 * Randomize the human starting  position
+	 * 
+	 * @param {number} pCount 
+	 */
 	RandomXY: function(pCount) {
 		
 		Session.HumanPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 3);

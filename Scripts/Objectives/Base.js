@@ -1,5 +1,5 @@
 
-Objectives = {
+var Objectives = {
 	
 	KillAllEnemy: {
 		
