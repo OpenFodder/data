@@ -68,7 +68,7 @@ var Terrain = {
 		pRoughness = Map.getRandomFloat(0.01, 0.3);
 		pScale = Map.getRandomFloat(0.01, 0.1);
 		pSeed = Map.getRandomInt(1, 500);
-		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 5, true);
+		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 5, true, 0.08);
 	},
 	
 	/**
