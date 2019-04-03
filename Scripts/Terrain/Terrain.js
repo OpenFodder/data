@@ -94,17 +94,17 @@ var Terrain = {
 	GetCurrent: function() {
 		switch(Map.getTileType()) {
 			
-			case TileTypes.Jungle:
+			case this.Types.Jungle:
 				return Terrain.Jungle;
-			case TileTypes.Desert:
+			case this.Types.Desert:
 				return Terrain.Desert;
-			case TileTypes.Ice:
+			case this.Types.Ice:
 				return Terrain.Ice;
-			case TileTypes.Moors:
+			case this.Types.Moors:
 				return Terrain.Moors;
-			case TileTypes.Interior:
+			case this.Types.Interior:
 				return Terrain.Interior;
-			case TileTypes.AmigaFormat:
+			case this.Types.AmigaFormat:
 				return Terrain.AmigaFormat;
 				
 			default:

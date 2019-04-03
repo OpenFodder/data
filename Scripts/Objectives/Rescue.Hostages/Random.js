@@ -49,7 +49,7 @@ Objectives.RescueHostages.CreateTent = function() {
 		// TODO: Loop all known groups
 		// Find a position for the tent which is more than 50 away from the first hostage group
 		do {
-			Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+			Position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
 			++Attempts;
 		} while( Map.getDistanceBetweenPositions(Session.HostageGroupPositions[0], Position) < 50 && Attempts < 10);
 		
@@ -83,7 +83,7 @@ Objectives.RescueHostages.CreateHostages = function(pHostageCount, pHasEnemyGuar
 	pHasEnemyGuard = true;
 
 	// Place a 'groups' of hostages
-	HostagePosition = Map.getRandomXYByTerrainType(TerrainType.Land, 2);
+	HostagePosition = Map.getRandomXYByTerrainType(Terrain.Features.Land, 2);
 	Session.HostageGroupPositions.push(HostagePosition);
 
 	// Place an amount of hostages near this group

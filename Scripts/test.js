@@ -21,7 +21,7 @@ Objectives.RescueHostages.Random(1);
 RandomLast = null;
 
 for(count = 0; count < 5; ++count) {
-	Random = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+	Random = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
 
 	if(RandomLast != null)
 		Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,Random, RandomLast);

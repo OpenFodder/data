@@ -32,7 +32,7 @@ var Helicopters = {
 		 * Add a random helicopter
 		 */
 		Random: function() {
-			Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+			Position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
 
 			// TODO
 		}

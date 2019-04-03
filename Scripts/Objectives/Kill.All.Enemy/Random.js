@@ -5,7 +5,7 @@
 Objectives.KillAllEnemy.CreateEnemyTroop = function(pCount) {
 	
 	for(var count = 0; count < pCount; ++count) {
-		position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+		position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
 		Map.SpriteAdd( SpriteTypes.Enemy, position.x, position.y );
 	}
 }
