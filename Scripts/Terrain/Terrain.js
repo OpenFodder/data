@@ -1,8 +1,10 @@
 
+/**
+ * Terrain related functions
+ */
 var Terrain = {
 	
 	Jungle: {
-		
 		Tiles: {
 			Water: 326,
 			QuickSand: 167,
@@ -12,46 +14,78 @@ var Terrain = {
 	},
 
 	Desert: {
-	
+		Tiles: {
+			Water: 180,
+			Land: 0,
+			Tree: 220
+		}
 	},
 	
 	Ice: {
-		
+		Tiles: {
+			Water: 100,
+			Land: 0,
+			Tree: 170
+		}
 	},
 
 	Moors: {
 		
+		Tiles: {
+			Water: 193,
+			Land: 0,
+			Tree: 2
+		}
 	},
 	
 	Interior: {
-		
+		Tiles: {
+			Water: 242,
+			Land: 4,
+			Tree: 275
+		}
 	},
 	
 	AmigaFormat: {
-		
+		Tiles: {
+			Water: 100,
+			Land: 0,
+			Tree: 240
+		}
 	},
 	
+	/**
+	 * Get basic titles for the current Map Tile Type
+	 */
+	GetCurrent: function() {
+		switch(Map.getTileType()) {
+			
+			case TileTypes.Jungle:
+				return Terrain.Jungle;
+			case TileTypes.Desert:
+				return Terrain.Desert;
+			case TileTypes.Ice:
+				return Terrain.Ice;
+			case TileTypes.Moors:
+				return Terrain.Moors;
+			case TileTypes.Interior:
+				return Terrain.Interior;
+			case TileTypes.AmigaFormat:
+				return Terrain.AmigaFormat;
+				
+			default:
+				return Terrain.Jungle;
+		}
+	},
+
 	/**
 	 * Get the basic tile ids for the current map tileType
 	 * 
 	 * @return object
 	 */
 	GetTiles: function() {
-				
-		switch(Map.getTileType()) {
-			
-			case TileTypes.Jungle:
-				return Terrain.Jungle.Tiles;
-			
-			case TileTypes.Desert:
-			case TileTypes.Ice:
-			case TileTypes.Moors:
-			case TileTypes.Interior:
-			case TileTypes.AmigaFormat:
-				return Terrain.Jungle.Tiles;
-			default:
-				return Terrain.Jungle.Tiles;;
-		}
+
+		return this.GetCurrent().Tiles;
 	},
 	
 	/**
@@ -65,10 +99,16 @@ var Terrain = {
 		//pPersistance = Map.getRandomFloat(0.1, 1.);	// higher produces more trees
 		//return this.RandomSimplexNoise(pScale, pLacunarity, pPersistance, 5 );
 		
-		pRoughness = Map.getRandomFloat(0.01, 0.3);
-		pScale = Map.getRandomFloat(0.01, 0.1);
-		pSeed = Map.getRandomInt(1, 500);
-		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 5, true, 0.08);
+		pRoughness = Map.getRandomFloat(0.00, 0.5);
+		pScale = Map.getRandomFloat(0.001, 0.03);
+		pSeed = Map.getRandomInt(0, 500);
+		pEdgeFade = Map.getRandomFloat(0.0, 0.2);
+		if (Map.getRandomInt(0,1) == 0)
+			pRadialMask = false;
+		else
+			pRadialMask = true;
+
+		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 4, pRadialMask, pEdgeFade);
 	},
 	
 	/**
@@ -79,24 +119,25 @@ var Terrain = {
 	 * @param {number} pSeed 
 	 * @param {number} pOctaves 
 	 * @param {boolean} pRadialEnabled 
+	 * @param {number} pEdgeFade
 	 */
-	RandomSimplexIslands: function(pRoughness, pScale, pSeed, pOctaves, pRadialEnabled) {
+	RandomSimplexIslands: function(pRoughness, pScale, pSeed, pOctaves, pRadialEnabled, pEdgeFade) {
 		Tiles = this.GetTiles();
-		noises = Map.SimplexIslands(pOctaves, pRoughness, pScale, pSeed, pRadialEnabled);
+		noises = Map.SimplexIslands(pOctaves, pRoughness, pScale, pSeed, pRadialEnabled, pEdgeFade);
 		
-		for( y = 0; y < Map.getHeight(); ++y) {
-			for( x = 0; x < Map.getWidth(); ++x ) {
-				
+		for( x = 0; x < Map.getWidth(); ++x ) {
+			for( y = 0; y < Map.getHeight(); ++y) {
+	
 				noise =  noises[x][y];
 				TileID = 0;
 
-				if (noise < 0.100) {
+				if (noise <= 0.21) {
 					TileID = Tiles.Water;
 				}
-				else if (noise < 0.500) {
+				else if (noise < 0.6) {
 					TileID = Tiles.Land;
 				}
-				else {
+				else if (noise > 0.6) {
 					TileID = Tiles.Tree;
 				}
 

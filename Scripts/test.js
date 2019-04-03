@@ -3,18 +3,19 @@
 Session.Reset();
 
 
-Map.Create(50, 30, TileTypes.Jungle, 0);
+Map.Create(128, 128, TileTypes.Interior, 0);
 Terrain.Randomize();
 
 Human.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
-Objectives.DestroyEnemyBuildings.Random(2);
 
-Objectives.RescueHostages.Random(1);
-Objectives.RescueHostages.Random(1);
-Objectives.RescueHostages.Random(1);
-Objectives.RescueHostages.Random(1);
+//Objectives.DestroyEnemyBuildings.Random(2);
 
+/*Objectives.RescueHostages.Random(1);
+Objectives.RescueHostages.Random(1);
+Objectives.RescueHostages.Random(1);
+Objectives.RescueHostages.Random(1);
+*/
 // Some Fun
 /*
 RandomLast = null;
