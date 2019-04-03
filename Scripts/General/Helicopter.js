@@ -15,7 +15,7 @@ var Helicopters = {
 
 			// Find a position which can be accessed by walking
 			do {
-				Position = Map.getRandomXYByTerrainType(TerrainType.Land, 1);
+				Position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
 				Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, Position, Session.HumanPosition);
 				++Attempts;
 			} while(Distance.length < 10 && Attempts < 10);

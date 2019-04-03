@@ -1,9 +1,43 @@
 
 /**
- * Terrain related functions
+ * @var {object} {object} Terrain related functions
  */
 var Terrain = {
 	
+	/**
+	 * @var {object} {number} Types of available 
+	 */
+	Types: {
+		Jungle: 0,
+		Desert: 1,
+		Ice: 2,
+		Moors: 3,
+		Interior: 4,
+		AmigaFormat: 5
+	},
+
+	/**
+	 * @var {object} {number} Terrain Features
+	 */
+	Features: {
+		Land: 		0,
+		Rocky:	 	1,
+		Rocky2: 	2,
+		BounceOff: 	3,
+		QuickSand: 	4,
+		WaterEdge: 	5,
+		Water: 		6,
+		Snow: 		7,
+		QuickSandEdge: 8,
+		Drop: 	9,
+		Drop2: 	0x0A,
+		Sink: 	0x0B,
+		C: 		0x0C,
+		D: 		0x0D,
+		Jump: 	0x0E
+	},
+
+
 	Jungle: {
 		Tiles: {
 			Water: 326,

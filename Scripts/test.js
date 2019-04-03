@@ -3,7 +3,7 @@
 Session.Reset();
 
 
-Map.Create(128, 128, TileTypes.Interior, 0);
+Map.Create(128, 128, Terrain.Types.Desert, 0);
 Terrain.Randomize();
 
 Human.RandomXY(3);

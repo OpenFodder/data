@@ -8,7 +8,7 @@ var Human = {
 	 */
 	RandomXY: function(pCount) {
 		
-		Session.HumanPosition = Map.getRandomXYByTerrainType(TerrainType.Land, 3);
+		Session.HumanPosition = Map.getRandomXYByTerrainType(Terrain.Features.Land, 3);
 		// TODO: Check for enemy within X range
 
 		Position = new cPosition();
