@@ -15,7 +15,7 @@ var Helicopters = {
 
 			// Find a position which can be accessed by walking
 			do {
-				Position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
+				Position = Map.getRandomXYByFeatures(Terrain.Features.FlatGround(), 1);
 				Distance = Map.calculatePathBetweenPositions(SpriteTypes.Player, Position, Session.HumanPosition);
 				++Attempts;
 			} while(Distance.length < 10 && Attempts < 10);
@@ -32,7 +32,7 @@ var Helicopters = {
 		 * Add a random helicopter
 		 */
 		Random: function() {
-			Position = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
+			Position = Map.getRandomXYByFeatures(Terrain.Features.FlatGround(), 1);
 
 			// TODO
 		}

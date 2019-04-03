@@ -34,9 +34,10 @@ var Terrain = {
 		Sink: 	0x0B,
 		C: 		0x0C,
 		D: 		0x0D,
-		Jump: 	0x0E
-	},
+		Jump: 	0x0E,
 
+		FlatGround: function() { return [Terrain.Features.Land , Terrain.Features.Snow]; }
+	},
 
 	Jungle: {
 		Tiles: {

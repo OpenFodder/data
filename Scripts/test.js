@@ -3,25 +3,25 @@
 Session.Reset();
 
 
-Map.Create(128, 128, Terrain.Types.Desert, 0);
+Map.Create(128, 128, Terrain.Types.Ice, 0);
 Terrain.Randomize();
 
 Human.RandomXY(3);
 Objectives.KillAllEnemy.Random(3);
 
-//Objectives.DestroyEnemyBuildings.Random(2);
+Objectives.DestroyEnemyBuildings.Random(2);
 
-/*Objectives.RescueHostages.Random(1);
 Objectives.RescueHostages.Random(1);
 Objectives.RescueHostages.Random(1);
 Objectives.RescueHostages.Random(1);
-*/
+Objectives.RescueHostages.Random(1);
+
 // Some Fun
 /*
 RandomLast = null;
 
 for(count = 0; count < 5; ++count) {
-	Random = Map.getRandomXYByTerrainType(Terrain.Features.Land, 1);
+	Random = Map.getRandomXYByFeatures(Terrain.Features.FlatGround(), 1);
 
 	if(RandomLast != null)
 		Strange.PlaceSpritesOnPath(SpriteTypes.GrenadeBox,Random, RandomLast);
