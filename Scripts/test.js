@@ -3,7 +3,7 @@
 Session.Reset();
 
 
-Map.Create(128, 128, Terrain.Types.Ice, 0);
+Map.Create(90, 64, Terrain.Types.Jungle, 0);
 Terrain.Randomize();
 
 Human.RandomXY(3);

@@ -133,17 +133,34 @@ var Terrain = {
 		//pLacunarity = Map.getRandomFloat(0.1, 0.5);
 		//pPersistance = Map.getRandomFloat(0.1, 1.);	// higher produces more trees
 		//return this.RandomSimplexNoise(pScale, pLacunarity, pPersistance, 5 );
-		
+		pOctaves = 4;
 		pRoughness = Map.getRandomFloat(0.00, 0.5);
 		pScale = Map.getRandomFloat(0.001, 0.03);
 		pSeed = Map.getRandomInt(0, 500);
-		pEdgeFade = Map.getRandomFloat(0.0, 0.2);
+		pEdgeFade = Map.getRandomFloat(0.1, 0.2);
 		if (Map.getRandomInt(0,1) == 0)
-			pRadialMask = false;
+			pRadialEnabled = false;
 		else
-			pRadialMask = true;
+			pRadialEnabled = true;
 
-		return this.RandomSimplexIslands(pRoughness, pScale, pSeed, 4, pRadialMask, pEdgeFade);
+		if(Map.getTileType() == this.Types.Jungle) {
+			var lev_limits = [0.17, 0.25, 0.35, 0.45, 1.00];
+			noises = Map.SimplexIslands(pOctaves, pRoughness, pScale, pSeed, pRadialEnabled, pEdgeFade);
+
+			var st = new CSmoothTerrain();
+			st.run('cf1', 'jungle', 'level', Map.getWidth(), Map.getHeight(), noises, lev_limits);
+
+			for (var y = 0; y < Map.getHeight() ; y++) {
+				for (var x = 0; x < Map.getWidth(); x++) {
+
+					Map.TileSet( x, y, st.getMapTile(x, y) );	  
+				}
+			}
+
+			return;
+		}
+
+		this.RandomSimplexIslands(pRoughness, pScale, pSeed, 4, pRadialEnabled, pEdgeFade);
 	},
 	
 	/**
